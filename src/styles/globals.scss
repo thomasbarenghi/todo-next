@@ -1,0 +1,273 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "Georgia Regular";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Georgia Regular"), url("/fonts/georgia.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "Georgia Italic";
+    font-style: italic;
+    font-weight: normal;
+    src: local("Georgia Italic"), url("/fonts/georgiai.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "Georgia Bold";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Georgia Bold"), url("/fonts/georgiab.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "Georgia Bold Italic";
+    font-style: italic;
+    font-weight: normal;
+    src: local("Georgia Bold Italic"),
+      url("/fonts/georgiaz.woff2") format("woff2");
+  }
+}
+
+/* Fuente */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+li,
+span,
+div,
+input,
+button,
+textarea,
+select,
+label,
+option,
+small,
+strong,
+b,
+i,
+em,
+u,
+ul,
+ol,
+dl,
+dt,
+dd,
+blockquote,
+pre,
+code,
+hr,
+table,
+th,
+td,
+form,
+fieldset,
+legend,
+address,
+img,
+figure,
+figcaption,
+header,
+footer,
+nav,
+section,
+article,
+main,
+video,
+audio,
+iframe,
+object,
+canvas,
+details,
+summary,
+menu,
+menuitem,
+summary {
+  font-family: var(--outfit-font);
+}
+
+/*Weight */
+h1,
+h2,
+h3 {
+  line-height: 130% !important;
+  @apply font-light;
+  color: black
+}
+
+h4,
+h5,
+h6 {
+  @apply font-normal;
+  color: black
+}
+
+h1, h2, h3, h4, h5, h6 {
+
+  & span {
+    color: black
+  }
+}
+
+p,
+span,
+li,
+a,
+label {
+  @apply font-light;
+  color: #25272D
+}
+
+/* Size */
+h1 {
+  @apply text-4xl;
+}
+
+h2 {
+  @apply text-3xl;
+}
+
+h3 {
+  @apply text-2xl;
+}
+
+h4 {
+  @apply text-xl;
+}
+
+h5 {
+  @apply text-lg;
+}
+
+h6 {
+  @apply text-base;
+}
+
+p,
+span,
+li,
+a,
+label {
+  @apply text-base;
+}
+
+small {
+  @apply text-sm;
+}
+
+@layer base {
+  .seccion {
+    @apply w-full px-7 md:container sm:px-7 md:mx-auto md:px-7 lg:px-16;
+  }
+
+  .gap-t1 {
+    @apply gap-5 md:gap-8 lg:gap-8;
+  }
+
+  .grid-columns-1 {
+    @apply flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-4;
+  }
+
+  .grid-columns-2 {
+    @apply flex flex-col lg:grid-cols-3 lg:grid 2xl:grid-cols-3;
+  }
+
+  .grid-columns-3 {
+    @apply flex flex-col lg:grid-cols-2 2xl:grid-cols-2;
+  }
+
+  //Combo overflow x
+  @media (max-width: 640px) {
+    .combo-overflow-x {
+      @apply overflow-y-hidden overflow-x-scroll whitespace-nowrap;
+      flex-direction: row !important;
+
+      & .portfolioItem {
+        min-width: 75vw;
+      }
+    }
+  }
+}
+
+//home
+.masonry-grid {
+  display: flex;
+  margin-left: -30px; /* gutter size offset */
+  width: auto;
+}
+
+.masonry-grid-column {
+  padding-left: 30px; /* gutter size */
+  background-clip: padding-box;
+}
+
+.masonry-grid-item {
+  margin-bottom: 30px; /* gutter size */
+  width: 100%;
+}
+
+@media (max-width: 1100px) {
+  .masonry-grid {
+    flex-wrap: wrap;
+    margin-left: -30px;
+  }
+
+  .masonry-grid-column {
+    padding-left: 30px;
+    width: 100%;
+  }
+}
+
+
+.cursor,
+.cursor-dot {
+ position:fixed;
+ pointer-events:none;
+ top:50%;
+ left:50%;
+ border-radius:50%;
+ z-index:999;
+ transform:translate(-50%,-50%);
+ -webkit-animation:.1s;
+ animation:.1s;
+ overflow:hidden
+}
+.cursor {
+ width:24px;
+ height:24px;
+ background-color:red;
+ border-color:blue;
+ mix-blend-mode:multiply
+}
+
+.cursor-dot {
+ width:4px;
+ height:4px;
+ background-color:#606887;
+ -webkit-animation:.4s linear;
+ animation:.4s linear;
+ mix-blend-mode:multiply
+}
+
+
+.cursor-dot .body.dark,
+body.dark .cursor {
+ background-color:#f3f2f9;
+ mix-blend-mode:difference
+}
+body.dark .cursor {
+ border-color:#f3f2f9
+}
+body.dark .cursor-dot {
+ background-color:#f3f2f9;
+ mix-blend-mode:difference
+}
