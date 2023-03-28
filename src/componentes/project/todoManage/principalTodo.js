@@ -119,7 +119,7 @@ export default function PrincipalTodo({ todo }) {
     <div className="mb-4 flex flex-row items-start justify-start gap-2 align-top">
       <input
         type="checkbox"
-        style={{ width: "25px", height: "25px" }}
+        style={{ minWidth: "25px", minHeight: "25px", maxWidth: "25px", maxHeight: "25px" }}
       className="mt-3"
     //class="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
         onClick={() => handleCompletedTodo()}

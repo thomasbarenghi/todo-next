@@ -78,7 +78,7 @@ export default function SubTodo({ subTodo, todoId }) {
         <div className="flex items-center justify-start gap-2 align-middle">
           <input
             type="checkbox"
-            style={{ width: "20px", height: "20px" }}
+            style={{ minWidth: "20px", minHeight: "20px", maxWidth: "20px", maxHeight: "20px" }}
             className=""
             onChange={() => {}}
             checked={subTodo.completed}

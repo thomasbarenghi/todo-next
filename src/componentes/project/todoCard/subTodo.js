@@ -16,7 +16,7 @@ export default function SubTask({ todo }) {
                   <input
                     className="form-check-input mini-ckBox"
                     type="checkbox"
-                    style={{ width: "20px", height: "20px" }}
+                    style={{ minWidth: "20px", minHeight: "20px", maxWidth: "20px", maxHeight: "20px" }}
                     onChange={() => {}}
                     onClick={() =>
                       dispatch(
