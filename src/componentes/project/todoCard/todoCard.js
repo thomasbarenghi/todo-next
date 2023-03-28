@@ -19,9 +19,9 @@ export default function TodoCard({ todo }) {
   return (
     <div key={todo.id}>
       <TodoManage />
-      <div className="rounded-3xl bg-white p-10 flex flex-row align-top justify-between items-start w-full">
+      <div className="flex w-full flex-row items-start justify-between rounded-3xl bg-white p-10 align-top">
         <div className="w-full">
-          <div className="flex flex-row align-center justify-start items-start gap-2">
+          <div className="align-center flex flex-row items-start justify-start gap-2">
             <input
               className="mt-3"
               onChange={() => {}}
@@ -37,7 +37,7 @@ export default function TodoCard({ todo }) {
           {todo.subTodos.length > 0 && <SubTodo todo={todo} />}
         </div>
         <button
-          className="p-2 border-solid border-blue-700 border-2 rounded-2xl"
+          className="rounded-2xl border-2 border-solid border-blue-700 p-2"
           type="button"
           onClick={() => handleSetActualTodo()}
         >

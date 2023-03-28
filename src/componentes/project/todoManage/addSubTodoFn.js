@@ -47,10 +47,10 @@ export default function AddSubTodoFn({ todo, setAddSubTodoVisibility }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex gap-2 justify-end align-bottom flex-col"
+      className="flex flex-col justify-end gap-2 align-bottom"
     >
       <label
-        className="flex flex-col w-full gap-1 font-medilight text-black"
+        className="font-medilight flex w-full flex-col gap-1 text-black"
         htmlFor="title"
       >
         <input
@@ -58,25 +58,25 @@ export default function AddSubTodoFn({ todo, setAddSubTodoVisibility }) {
           name="title"
           id="title"
           required
-          className="bg-blue-100 rounded-3xl px-4 py-2 placeholder:text-blue-600 text-sm"
+          className="rounded-3xl bg-blue-100 px-4 py-2 text-sm placeholder:text-blue-600"
           placeholder="Ingresa un title para tu subtarea"
           onChange={handleValidation}
         />
         {errors.title && (
-          <span className="text-red-500 text-xs">{errors.title}</span>
+          <span className="text-xs text-red-500">{errors.title}</span>
         )}
       </label>
-      <div className="flex gap-2 justify-start items-start align-top">
+      <div className="flex items-start justify-start gap-2 align-top">
         <button
           type="submit"
-          className="rounded-3xl bg-blue-700 py-2 px-6 flex text-white font-semibold text-sm"
+          className="flex rounded-3xl bg-blue-700 py-2 px-6 text-sm font-semibold text-white"
         >
           Añadir
         </button>
         <button
           type="button"
           onClick={(e) => setAddSubTodoVisibility(false)}
-          className="rounded-3xl bg-red-700 py-2 px-6 flex text-white font-semibold text-sm"
+          className="flex rounded-3xl bg-red-700 py-2 px-6 text-sm font-semibold text-white"
         >
           Cancelar
         </button>

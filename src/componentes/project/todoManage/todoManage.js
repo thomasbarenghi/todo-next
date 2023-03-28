@@ -34,11 +34,11 @@ export default function TodoManage() {
     <>
       {manageTodoVisibility && (
         <div
-          className="fixed z-10 h-screen w-screen flex justify-end align-middle items-center"
+          className="fixed z-10 flex h-screen w-screen items-center justify-end align-middle"
           style={{ background: "#00000066", top: 0, left: 0 }}
         >
-          <div className="h-full py-20 seccion flex justify-end">
-            <div className="bg-white rounded-3xl p-10 relative flex flex-col h-full w-full sm:w-3/4 lg:w-2/5 2xl:w-1/4">
+          <div className="seccion flex h-full justify-end py-20">
+            <div className="relative flex h-full w-full flex-col rounded-3xl bg-white p-10 sm:w-3/4 lg:w-2/5 2xl:w-1/4">
               <div
                 className="absolute top-4 right-4 p-1 "
                 onClick={() => setManageTodoVisibility(false)}
@@ -50,14 +50,14 @@ export default function TodoManage() {
                   src={"/icon/cross.svg"}
                 />
               </div>
-              <h4 className="font-semibold mb-2">Editemos esta tarea 🤯</h4>
-              <div className="flex justify-between flex-col h-full ">
-                <div className="overflow-y-scroll relative h-full ">
+              <h4 className="mb-2 font-semibold">Editemos esta tarea 🤯</h4>
+              <div className="flex h-full flex-col justify-between ">
+                <div className="relative h-full overflow-y-scroll ">
                   <div className="absolute top-0 left-0 bottom-0 right-0 pr-4">
                     <PrincipalTodo todo={actualTodo} />
                     {addSubTodoVisibility === false && (
                       <button
-                        className="font-semibold text-blue-700 text-sm"
+                        className="text-sm font-semibold text-blue-700"
                         onClick={() =>
                           setAddSubTodoVisibility(!addSubTodoVisibility)
                         }
@@ -82,7 +82,7 @@ export default function TodoManage() {
                 <div>
                   <button
                     onClick={() => dispatch(deleteTodo(actualTodo.id))}
-                    className="w-full bg-red-700 text-white py-3 px-8 rounded-3xl font-semibold mt-4"
+                    className="mt-4 w-full rounded-3xl bg-red-700 py-3 px-8 font-semibold text-white"
                   >
                     Borrar tarea
                   </button>

@@ -72,10 +72,10 @@ export default function SubTodo({ subTodo, todoId }) {
   return (
     <>
       <div
-        className="flex flex-row gap-3 justify-between w-full"
+        className="flex w-full flex-row justify-between gap-3"
         key={subTodo.id}
       >
-        <div className="flex-row flex gap-2 justify-center align-middle  items-center">
+        <div className="flex flex-row items-center justify-center gap-2  align-middle">
           <input
             type="checkbox"
             className=""
@@ -97,7 +97,7 @@ export default function SubTodo({ subTodo, todoId }) {
                 onBlur={() => handleVisibilityInputTitleBlur()}
               />
               {errors.title !== null && (
-                <p className="text-red-500 text-xs italic">{errors.title}</p>
+                <p className="text-xs italic text-red-500">{errors.title}</p>
               )}
             </>
           ) : (

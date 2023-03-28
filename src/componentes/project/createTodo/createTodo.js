@@ -51,11 +51,11 @@ export default function CreateTodo() {
     <>
       {createTodoVisibility && (
         <div
-          className="fixed z-10 h-screen w-screen flex justify-center align-middle items-center"
+          className="fixed z-10 flex h-screen w-screen items-center justify-center align-middle"
           style={{ background: "#00000066", top: 0, left: 0 }}
         >
           <div className="seccion container flex justify-center">
-            <div className="bg-white rounded-3xl p-10 relative flex flex-col w-full sm:w-max ">
+            <div className="relative flex w-full flex-col rounded-3xl bg-white p-10 sm:w-max ">
               <div
                 className="absolute top-4 right-4 p-1 "
                 onClick={() => setCreateTodoVisibility(false)}
@@ -69,33 +69,33 @@ export default function CreateTodo() {
               </div>
               <h3 className="font-semibold">Creemos una tarea 🚀</h3>
               <form onSubmit={handleSubmit}>
-                <div className="flex flex-col sm:flex-row mt-4 w-full gap-3 mb-4 ">
-                  <label className="flex flex-col  gap-1 font-medilight text-black">
+                <div className="mt-4 mb-4 flex w-full flex-col gap-3 sm:flex-row ">
+                  <label className="font-medilight flex  flex-col gap-1 text-black">
                     Titulo
                     <input
                       type="text"
                       name="titulo"
-                      className="bg-blue-100 rounded-3xl px-4 py-3 placeholder:text-blue-600 w-full"
+                      className="w-full rounded-3xl bg-blue-100 px-4 py-3 placeholder:text-blue-600"
                       placeholder="Ingresa un titulo increíble"
                       required
                     />
                     {errors.titulo && (
-                      <span className="text-red-500 text-sm">
+                      <span className="text-sm text-red-500">
                         {errors.titulo}
                       </span>
                     )}
                   </label>
-                  <label className="flex flex-col  gap-1 font-medilight text-black">
+                  <label className="font-medilight flex  flex-col gap-1 text-black">
                     Descripción
                     <input
                       type="text"
                       name="descripcion"
-                      className="bg-blue-100 rounded-3xl px-4 py-3 placeholder:text-blue-600 w-full"
+                      className="w-full rounded-3xl bg-blue-100 px-4 py-3 placeholder:text-blue-600"
                       placeholder="Ingresa una descripción increíble"
                       required
                     />
                     {errors.descripcion && (
-                      <span className="text-red-500 text-sm">
+                      <span className="text-sm text-red-500">
                         {errors.descripcion}
                       </span>
                     )}
@@ -103,7 +103,7 @@ export default function CreateTodo() {
                 </div>
                 <button
                   type="submit"
-                  className="rounded-3xl bg-blue-700 py-4 px-8 flex text-white font-semibold"
+                  className="flex rounded-3xl bg-blue-700 py-4 px-8 font-semibold text-white"
                 >
                   Crear tarea
                 </button>

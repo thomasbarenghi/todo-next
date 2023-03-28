@@ -117,7 +117,7 @@ export default function PrincipalTodo({ todo }) {
   };
 
   return (
-    <div className="flex flex-row justify-start align-top items-start gap-2 mb-4">
+    <div className="mb-4 flex flex-row items-start justify-start gap-2 align-top">
       <input
         type="checkbox"
         className="mt-2"
@@ -138,7 +138,7 @@ export default function PrincipalTodo({ todo }) {
               required
             />
             {errorTitle.title && (
-              <p className="text-red-500 text-xs italic">{errorTitle.title}</p>
+              <p className="text-xs italic text-red-500">{errorTitle.title}</p>
             )}
           </>
         ) : (
@@ -160,7 +160,7 @@ export default function PrincipalTodo({ todo }) {
               required
             />
             {errorDescription.description && (
-              <p className="text-red-500 text-xs italic">
+              <p className="text-xs italic text-red-500">
                 {errorDescription.description}
               </p>
             )}
