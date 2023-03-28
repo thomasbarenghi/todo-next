@@ -46,10 +46,10 @@ export default function CreateTodo() {
           <div className="seccion container">
             <div className="bg-white rounded-3xl p-10 relative flex flex-col ">
               <div
-                className="absolute top-0 right-0 p-1 "
+                className="absolute top-4 right-4 p-1 "
                 onClick={() => setCreateTodoVisibility(false)}
               >
-                <Image width={20} height={20} alt={"close"} />
+                <Image width={15} height={15} alt={"close"} src={"/icon/cross.svg"} />
               </div>
               <h3 className="font-semibold">Creemos una tarea 🚀</h3>
               <form onSubmit={handleSubmit}>
@@ -59,7 +59,7 @@ export default function CreateTodo() {
                     <input
                       type="text"
                       name="titulo"
-                      className="bg-blue-100 rounded-3xl px-4 py-3 placeholder:text-blue-400"
+                      className="bg-blue-100 rounded-3xl px-4 py-3 placeholder:text-blue-600"
                       placeholder="Ingresa un titulo increíble"
                       required
                     />
