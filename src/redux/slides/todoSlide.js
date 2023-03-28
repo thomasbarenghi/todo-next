@@ -3,9 +3,20 @@ import { RootState } from "../store/store";
 
 const initialState = {
   items: [],
+  completas: [],
+  incompletas: [],
+  activas: [],
   actualTodo: {},
-  loading: false,
-  error: null,
+  //loading: false,
+  // error: null,
+  filter: {
+    active: {},
+    options: [
+      { value: "all", label: "Todas" },
+      { value: "completed", label: "Completas" },
+      { value: "incompleted", label: "Incompletas" },
+    ],
+  },
 };
 
 //Reducers
@@ -16,6 +27,7 @@ const todoSlice = createSlice({
     getTodos(state, action) {},
     postTodoRed(state, action) {
       state.items = [...state.items, action.payload];
+      state.incompletas = [...state.incompletas, action.payload.id];
     },
     setActualTodoRed(state, action) {
       console.log(action.payload);
@@ -39,8 +51,11 @@ const todoSlice = createSlice({
     deleteTodoRed(state, action) {
       console.log(action.payload);
       const id = action.payload;
-      const index = state.items.findIndex((todo) => todo.id === id);
-      state.items.splice(index, 1);
+      state.items = state.items.filter((todo) => todo.id !== id);
+      state.completas = state.completas.filter((completa) => completa !== id);
+      state.incompletas = state.incompletas.filter(
+        (incompleta) => incompleta !== id
+      );
     },
     editSubTodoRed(state, action) {
       console.log(action.payload);
@@ -61,11 +76,23 @@ const todoSlice = createSlice({
       state.items[index].subTodos.splice(indexSubTodo, 1);
     },
     checkTodoRed(state, action) {
+      //Checkear el todo y mover a completadas
       console.log(action.payload);
       const { idTodo } = action.payload;
       const index = state.items.findIndex((todo) => todo.id === idTodo);
       console.log(index);
       state.items[index].completed = !state.items[index].completed;
+      if (state.items[index].completed) {
+        state.completas = [...state.completas, idTodo];
+        state.incompletas = state.incompletas.filter(
+          (incompleta) => incompleta !== idTodo
+        );
+      } else {
+        state.incompletas = [...state.incompletas, idTodo];
+        state.completas = state.completas.filter(
+          (completa) => completa !== idTodo
+        );
+      }
     },
     checkSubTodoRed(state, action) {
       console.log(action.payload);
@@ -76,9 +103,11 @@ const todoSlice = createSlice({
         (subTodo) => subTodo.id === idSubTodo
       );
       console.log(indexSubTodo);
-      state.items[index].subTodos[indexSubTodo].completed = !state.items[
-        index
-      ].subTodos[indexSubTodo].completed;
+      state.items[index].subTodos[indexSubTodo].completed =
+        !state.items[index].subTodos[indexSubTodo].completed;
+    },
+    setFilterActivasRed(state, action) {
+      state.filter.active = action.payload.value;
     },
   },
 });
@@ -129,6 +158,11 @@ export const checkSubTodo = (todo) => (dispatch) => {
   dispatch(checkSubTodoRed(todo));
 };
 
+export const setActivas = (value) => (dispatch) => {
+  console.log(value);
+  dispatch(setFilterActivasRed(value));
+};
+
 //Exportamos las acciones que generan cambios en el estado
 export const {
   postTodoRed,
@@ -140,6 +174,7 @@ export const {
   deleteSubTodoRed,
   checkTodoRed,
   checkSubTodoRed,
+  setFilterActivasRed,
 } = todoSlice.actions;
 
 //Exportamos el reducer

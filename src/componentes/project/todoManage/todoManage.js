@@ -32,7 +32,7 @@ export default function TodoManage() {
 
   return (
     <>
-      {manageTodoVisibility && (
+      {manageTodoVisibility && actualTodo && (
         <div
           className="fixed z-10 flex h-screen w-screen items-center justify-end align-middle"
           style={{ background: "#00000066", top: 0, left: 0 }}

@@ -4,10 +4,27 @@ import CreateTodo, {
   createTodoVisibilityExternal,
 } from "@/componentes/project/createTodo/createTodo";
 import TodoCard from "@/componentes/project/todoCard/todoCard";
+import { setActivas } from "@/redux/slides/todoSlide";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const dispatch = useDispatch();
-  const todos = useSelector((state) => state?.todos?.items) ?? [];
+  const todosX = useSelector((state) => state?.todos?.items) ?? [];
+  const filter = useSelector((state) => state?.todos?.filter) ?? [];
+  const data = useSelector((state) => state?.todos);
+  console.log(data);
+
+  const [todos, setTodos] = useState(todosX);
+
+  useEffect(() => {
+    if (filter.active === "all") {
+      setTodos(todosX);
+    } else if (filter.active === "completed") {
+      setTodos(todosX.filter((todo) => todo.completed));
+    } else if (filter.active === "incompleted") {
+      setTodos(todosX.filter((todo) => !todo.completed));
+    }
+  }, [filter.active, todosX]);
 
   return (
     <>
@@ -19,32 +36,57 @@ export default function Home() {
       </Head>
       <main>
         <CreateTodo />
-        <section className=" flex w-full flex-col bg-gray-100 py-16" style={{minHeight: "auto"}}>
+        <section
+          className=" flex w-full flex-col bg-gray-100 py-16"
+          style={{ minHeight: "auto" }}
+        >
           <div className="seccion">
-            <div className="  flex w-full flex-col justify-between gap-2 sm:flex-row">
+            <div className="flex w-full flex-col justify-between gap-2 overflow-x-scroll sm:flex-row sm:overflow-hidden">
               <h1>
                 Mis <strong className="font-semibold">tareas</strong>
               </h1>
-              <button
-                className="flex justify-center rounded-3xl bg-blue-700 py-4 px-8 align-middle font-semibold text-white"
-                onClick={(e) => createTodoVisibilityExternal()}
-              >
-                Añadir tarea
-              </button>
+              <div className="flex gap-4">
+                <select
+                  className="  rounded-3xl border-r-8 border-solid border-blue-200 bg-blue-200 py-4 px-6 align-middle font-semibold text-blue-700"
+                  onChange={(e) =>
+                    dispatch(setActivas({ value: e.target.value }))
+                  }
+                  value={filter.active}
+                >
+                  {filter?.options?.map((option) => (
+                    <option
+                      name={option.label}
+                      key={option.value}
+                      value={option.value}
+                      style={{ fontFamily: "Outfit, sans-serif" }}
+                    >
+                      {option.label}
+                    </option>
+                  ))}
+                </select>
+
+                <button
+                  className="flex justify-center whitespace-nowrap rounded-3xl bg-blue-700 py-4 px-8 align-middle font-semibold text-white"
+                  onClick={(e) => createTodoVisibilityExternal()}
+                >
+                  Añadir tarea
+                </button>
+              </div>
             </div>
             <div className="  mt-6 flex w-full flex-col justify-between gap-5">
               {todos.map((todo) => (
-                <>
+                <div key={todo.id}>
                   <TodoCard todo={todo} />
-                </>
+                </div>
               ))}
+
               {todos.length === 0 && (
                 <div
-                  className="flex flex-col items-center  justify-center"
+                  className="flex flex-col items-center  justify-center mt-4"
                   style={{ minHeight: "200px" }}
                 >
                   <h4 className="mb-4 w-full text-center">
-                    Hey, parece que aun no creaste ninguna tarea 😵‍💫, <br />{" "}
+                    Hey, parece que no hay ninguna tarea por aquí 😵‍💫, <br />{" "}
                     <bold className="font-semibold">
                       ¿Que esperas para crear una?
                     </bold>{" "}
