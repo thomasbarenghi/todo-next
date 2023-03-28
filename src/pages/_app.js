@@ -4,6 +4,7 @@ import { Outfit } from "next/font/google";
 import { Provider } from "react-redux";
 import { PersistGate } from 'redux-persist/integration/react'
 import store, { persistor } from '../redux/store/store'
+import Footer from '@/componentes/masters/footer/footer';
 
 
 const outfit = Outfit({
@@ -25,6 +26,7 @@ export default function App({ Component, pageProps }) {
         `}</style>
       <Header />
       <Component {...pageProps} />
+      <Footer />
       </PersistGate>
       </ Provider>
     </>

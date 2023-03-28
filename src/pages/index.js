@@ -7,7 +7,7 @@ import TodoCard from "@/componentes/project/todoCard/todoCard";
 export default function Home() {
 
     const dispatch = useDispatch();
-    const todos = useSelector((state) => state.todos.items) ?? [];
+    const todos = useSelector((state) => state?.todos?.items) ?? [];
 
     return (
         <>

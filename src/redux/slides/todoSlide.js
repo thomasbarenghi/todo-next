@@ -67,6 +67,19 @@ const todoSlice = createSlice({
       console.log(index);
       state.items[index].completed = !state.items[index].completed;
     },
+    checkSubTodoRed(state, action) {
+      console.log(action.payload);
+      const { idTodo, idSubTodo } = action.payload;
+      const index = state.items.findIndex((todo) => todo.id === idTodo);
+      console.log(index);
+      const indexSubTodo = state.items[index].subTodos.findIndex(
+        (subTodo) => subTodo.id === idSubTodo
+      );
+      console.log(indexSubTodo);
+      state.items[index].subTodos[indexSubTodo].completed = !state.items[
+        index
+      ].subTodos[indexSubTodo].completed;
+    },
   },
 });
 
@@ -111,6 +124,11 @@ export const checkTodo = (todo) => (dispatch) => {
   dispatch(checkTodoRed(todo));
 };
 
+export const checkSubTodo = (todo) => (dispatch) => {
+  console.log(todo);
+  dispatch(checkSubTodoRed(todo));
+};
+
 //Exportamos las acciones que generan cambios en el estado
 export const {
   postTodoRed,
@@ -121,6 +139,7 @@ export const {
   editSubTodoRed,
   deleteSubTodoRed,
   checkTodoRed,
+  checkSubTodoRed,
 } = todoSlice.actions;
 
 //Exportamos el reducer

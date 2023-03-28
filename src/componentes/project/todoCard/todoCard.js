@@ -5,7 +5,7 @@ import TodoManage, {
   manageTodoVisibilityExternal,
 } from "../todoManage/todoManage";
 import SubTodo from "./subTodo";
-import {checkTodo} from "@/redux/slides/todoSlide";
+import { checkTodo } from "@/redux/slides/todoSlide";
 
 export default function TodoCard({ todo }) {
   const dispatch = useDispatch();
@@ -22,10 +22,16 @@ export default function TodoCard({ todo }) {
       <div className="rounded-3xl bg-white p-10 flex flex-row align-top justify-between items-start w-full">
         <div className="w-full">
           <div className="flex flex-row align-center justify-start items-start gap-2">
-            <input className="mt-3" onChange={() => {}} type="checkbox" onClick={() => dispatch(checkTodo({idTodo: todo.id}))} checked={todo.completed}/>
+            <input
+              className="mt-3"
+              onChange={() => {}}
+              type="checkbox"
+              onClick={() => dispatch(checkTodo({ idTodo: todo.id }))}
+              checked={todo.completed}
+            />
             <div>
-            <h3 className="font-semibold">{todo.title}</h3>
-            <p>{todo.description}</p>
+              <h3 className="font-semibold">{todo.title}</h3>
+              <p>{todo.description}</p>
             </div>
           </div>
           {todo.subTodos.length > 0 && <SubTodo todo={todo} />}

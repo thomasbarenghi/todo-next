@@ -9,7 +9,7 @@ export const createTodoVisibilityExternal = () => {
 
 export default function CreateTodo() {
   const dispatch = useDispatch();
-  const todos = useSelector((state) => state.todos.items) ?? [];
+  const todos = useSelector((state) => state?.todos?.items) ?? [];
   const [createTodoVisibility, setCreateTodoVisibility] = useState(false);
 
   const handleVisibility = () => {

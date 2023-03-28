@@ -1,4 +1,11 @@
+import { useDispatch, useSelector } from "react-redux";
+import { checkSubTodo } from "@/redux/slides/todoSlide";
+
 export default function SubTask({ todo }) {
+
+
+  const dispatch = useDispatch();
+
   return (
     <>
       <div style={{ width: "97%", marginTop: "16px" }}>
@@ -12,6 +19,9 @@ export default function SubTask({ todo }) {
                     className="form-check-input mini-ckBox"
                     type="checkbox"
                     defaultChecked=""
+                    onChange={() => {} }
+                    onClick={() => dispatch(checkSubTodo({ idTodo: todo.id, idSubTodo: subTodo.id }))}
+                    checked={subTodo.completed}
                   />
                   <div>
                     <p className="font-normal">{subTodo.title} </p>
