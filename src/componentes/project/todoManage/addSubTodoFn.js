@@ -87,10 +87,8 @@ export default function AddSubTodoFn({ todo, setAddSubTodoVisibility }) {
 
 function validate(title) {
   const errors = {};
-  console.log("tt", title);
   if (title.title === "" || !title.title) {
     errors.title = "El title es requerido";
-    console.log("errors");
   }
   return errors;
 }

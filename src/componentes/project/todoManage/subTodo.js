@@ -52,7 +52,6 @@ export default function SubTodo({ subTodo, todoId }) {
     setErrors(errorTitle);
 
     if (Object.keys(errorTitle).length > 0) {
-      console.log("error");
       return;
     }
 
@@ -117,6 +116,7 @@ export default function SubTodo({ subTodo, todoId }) {
           width={10}
           height={10}
           onClick={() => dispatch(deleteSubTodo({ idSubTodo, todoId }))}
+          alt="delete"
         />
       </div>
     </>
@@ -128,7 +128,6 @@ function validateSubTodoForm(values) {
 
   if (!values.titulo || values.titulo === "") {
     errors.title = "El titulo es obligatorio";
-    console.log("El titulo es obligatorio", values);
   }
 
   return errors;

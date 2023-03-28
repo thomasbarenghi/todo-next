@@ -11,13 +11,11 @@ export default function Home() {
   const dispatch = useDispatch();
   const todosX = useSelector((state) => state?.todos?.items) ?? [];
   const filter = useSelector((state) => state?.todos?.filter) ?? [];
-  const data = useSelector((state) => state?.todos);
-  console.log(data);
   const [todos, setTodos] = useState(todosX);
+
   useEffect(() => {
     setTodos(todosX);
   }, [todosX]);
-
 
   useEffect(() => {
     if (filter.active === "all") {
@@ -82,10 +80,9 @@ export default function Home() {
                   <TodoCard todo={todo} />
                 </div>
               ))}
-
               {todos.length === 0 && (
                 <div
-                  className="flex flex-col items-center  justify-center mt-4"
+                  className="mt-4 flex flex-col  items-center justify-center"
                   style={{ minHeight: "200px" }}
                 >
                   <h4 className="mb-4 w-full text-center">

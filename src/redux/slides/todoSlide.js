@@ -30,17 +30,14 @@ const todoSlice = createSlice({
       state.incompletas = [...state.incompletas, action.payload.id];
     },
     setActualTodoRed(state, action) {
-      console.log(action.payload);
       state.actualTodo = action.payload;
     },
     editTodoRed(state, action) {
-      console.log(action.payload);
       const { id, todoEdited } = action.payload;
       const index = state.items.findIndex((todo) => todo.id === id);
       state.items[index] = todoEdited;
     },
     addSubTodoRed(state, action) {
-      console.log(action.payload);
       const { idTodo, newSubTodo } = action.payload;
       const index = state.items.findIndex((todo) => todo.id === idTodo);
       state.items[index].subTodos = [
@@ -49,7 +46,6 @@ const todoSlice = createSlice({
       ];
     },
     deleteTodoRed(state, action) {
-      console.log(action.payload);
       const id = action.payload;
       state.items = state.items.filter((todo) => todo.id !== id);
       state.completas = state.completas.filter((completa) => completa !== id);
@@ -58,7 +54,6 @@ const todoSlice = createSlice({
       );
     },
     editSubTodoRed(state, action) {
-      console.log(action.payload);
       const { idTodo, idSubTodo, subTodoEdited } = action.payload;
       const index = state.items.findIndex((todo) => todo.id === idTodo);
       const indexSubTodo = state.items[index].subTodos.findIndex(
@@ -67,7 +62,6 @@ const todoSlice = createSlice({
       state.items[index].subTodos[indexSubTodo] = subTodoEdited;
     },
     deleteSubTodoRed(state, action) {
-      console.log(action.payload);
       const { todoId, idSubTodo } = action.payload;
       const index = state.items.findIndex((todo) => todo.id === todoId);
       const indexSubTodo = state.items[index].subTodos.findIndex(
@@ -77,10 +71,8 @@ const todoSlice = createSlice({
     },
     checkTodoRed(state, action) {
       //Checkear el todo y mover a completadas
-      console.log(action.payload);
       const { idTodo } = action.payload;
       const index = state.items.findIndex((todo) => todo.id === idTodo);
-      console.log(index);
       state.items[index].completed = !state.items[index].completed;
       if (state.items[index].completed) {
         state.completas = [...state.completas, idTodo];
@@ -95,14 +87,11 @@ const todoSlice = createSlice({
       }
     },
     checkSubTodoRed(state, action) {
-      console.log(action.payload);
       const { idTodo, idSubTodo } = action.payload;
       const index = state.items.findIndex((todo) => todo.id === idTodo);
-      console.log(index);
       const indexSubTodo = state.items[index].subTodos.findIndex(
         (subTodo) => subTodo.id === idSubTodo
       );
-      console.log(indexSubTodo);
       state.items[index].subTodos[indexSubTodo].completed =
         !state.items[index].subTodos[indexSubTodo].completed;
     },
@@ -114,52 +103,42 @@ const todoSlice = createSlice({
 
 //Action
 export const postTodo = (todo) => (dispatch) => {
-  console.log(todo);
   dispatch(postTodoRed(todo));
 };
 
 export const setActualTodo = (todo) => (dispatch) => {
-  console.log(todo);
   dispatch(setActualTodoRed(todo));
 };
 
 export const editTodo = (todo) => (dispatch) => {
-  console.log(todo);
   dispatch(editTodoRed(todo));
 };
 
 export const deleteTodo = (id) => (dispatch) => {
-  console.log(id);
   dispatch(deleteTodoRed(id));
 };
 
 export const addSubTodo = (todo) => (dispatch) => {
-  console.log(todo);
   dispatch(addSubTodoRed(todo));
 };
 
 export const editSubTodo = (todo) => (dispatch) => {
-  console.log(todo);
   dispatch(editSubTodoRed(todo));
 };
 
 export const deleteSubTodo = (todo) => (dispatch) => {
-  console.log(todo);
   dispatch(deleteSubTodoRed(todo));
 };
 
 export const checkTodo = (todo) => (dispatch) => {
-  console.log(todo);
   dispatch(checkTodoRed(todo));
 };
 
 export const checkSubTodo = (todo) => (dispatch) => {
-  console.log(todo);
   dispatch(checkSubTodoRed(todo));
 };
 
 export const setActivas = (value) => (dispatch) => {
-  console.log(value);
   dispatch(setFilterActivasRed(value));
 };
 

@@ -41,8 +41,6 @@ export default function CreateTodo() {
       subTodos: [],
       completedSubTodos: [],
     };
-
-    console.log(newTodo);
     dispatch(postTodo(newTodo));
     setCreateTodoVisibility(false);
   };

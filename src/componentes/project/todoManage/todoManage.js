@@ -20,7 +20,6 @@ export default function TodoManage() {
   const [addSubTodoVisibility, setAddSubTodoVisibility] = useState(false);
 
   const handleVisibility = () => {
-    console.log("handleVisibility");
     setManageTodoVisibility(true);
   };
 

@@ -57,7 +57,6 @@ export default function PrincipalTodo({ todo }) {
     });
 
     setErrorTitle(errorTitleX);
-    console.log(errorTitleX);
     if (Object.keys(errorTitleX).length > 0) {
       return;
     }
@@ -184,7 +183,6 @@ export default function PrincipalTodo({ todo }) {
 
 function validateTitle(values) {
   let errors = {};
-  console.log(values);
   if (!values.title || values.title === "") {
     errors.title = "El titulo es obligatorio";
   }
@@ -193,9 +191,7 @@ function validateTitle(values) {
 
 function validateDescription(values) {
   let errors = {};
-  console.log(values);
   if (!values.description || values.description === "") {
-    console.log("entro");
     errors.description = "La descripcion es obligatoria";
   }
   return errors;
