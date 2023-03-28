@@ -13,8 +13,11 @@ export default function Home() {
   const filter = useSelector((state) => state?.todos?.filter) ?? [];
   const data = useSelector((state) => state?.todos);
   console.log(data);
-
   const [todos, setTodos] = useState(todosX);
+  useEffect(() => {
+    setTodos(todosX);
+  }, [todosX]);
+
 
   useEffect(() => {
     if (filter.active === "all") {
