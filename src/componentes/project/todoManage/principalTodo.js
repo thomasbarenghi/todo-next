@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { editTodo } from "@/redux/slides/todoSlide";
+import { editTodo, checkTodo } from "@/redux/slides/todoSlide";
 
 export default function PrincipalTodo({ todo }) {
   const dispatch = useDispatch();

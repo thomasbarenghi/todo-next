@@ -12,7 +12,7 @@ export default function Home() {
     return (
         <>
             <Head>
-                <title>Todo Next</title>
+                <title>Todo Next | Thomas Barenghi</title>
                 <meta name="description" content="Todo Next" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
@@ -20,9 +20,9 @@ export default function Home() {
                <CreateTodo/>  
                 <section className=" bg-gray-100 min-h-screen py-16 w-full flex flex-col" >
                     <div className="seccion">
-                    <div className="  flex flex-row justify-between w-full">
+                    <div className="  flex flex-col sm:flex-row justify-between w-full gap-2">
                         <h1>Mis{" "}<strong className="font-semibold" >tareas</strong></h1>
-                        <button className="rounded-3xl bg-blue-700 py-4 px-8 flex text-white font-semibold" onClick={(e) => createTodoVisibilityExternal()} >Añadir tarea</button>
+                        <button className="rounded-3xl bg-blue-700 py-4 px-8 flex text-white font-semibold align-middle justify-center" onClick={(e) => createTodoVisibilityExternal()} >Añadir tarea</button>
                     </div>
                     <div className="  flex flex-col justify-between mt-6 gap-5 w-full">
                         {

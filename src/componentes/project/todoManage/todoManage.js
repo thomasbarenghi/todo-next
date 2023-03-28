@@ -1,15 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import {
-  editTodo,
-  addSubTodo,
-  deleteTodo,
-  editSubTodo,
-  deleteSubTodo,
-  checkTodo,
-  checkSubTodo,
-} from "@/redux/slides/todoSlide";
+import { deleteTodo } from "@/redux/slides/todoSlide";
 import AddSubTodoFn from "./addSubTodoFn";
 import PrincipalTodo from "./principalTodo";
 import SubTodos from "./subTodos";
@@ -103,10 +95,3 @@ export default function TodoManage() {
     </>
   );
 }
-
-
-
-
-
-
-

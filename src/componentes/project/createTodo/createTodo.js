@@ -43,8 +43,8 @@ export default function CreateTodo() {
           className="fixed z-10 h-screen w-screen flex justify-center align-middle items-center"
           style={{ background: "#00000066", top: 0, left: 0 }}
         >
-          <div className="seccion container">
-            <div className="bg-white rounded-3xl p-10 relative flex flex-col ">
+          <div className="seccion container flex justify-center">
+            <div className="bg-white rounded-3xl p-10 relative flex flex-col w-full sm:w-max ">
               <div
                 className="absolute top-4 right-4 p-1 "
                 onClick={() => setCreateTodoVisibility(false)}
@@ -53,23 +53,23 @@ export default function CreateTodo() {
               </div>
               <h3 className="font-semibold">Creemos una tarea 🚀</h3>
               <form onSubmit={handleSubmit}>
-                <div className="flex flex-row mt-4 w-full gap-3 mb-4 ">
-                  <label className="flex flex-col w-full gap-1 font-medilight text-black">
+                <div className="flex flex-col sm:flex-row mt-4 w-full gap-3 mb-4 ">
+                  <label className="flex flex-col  gap-1 font-medilight text-black">
                     Titulo
                     <input
                       type="text"
                       name="titulo"
-                      className="bg-blue-100 rounded-3xl px-4 py-3 placeholder:text-blue-600"
+                      className="bg-blue-100 rounded-3xl px-4 py-3 placeholder:text-blue-600 w-full"
                       placeholder="Ingresa un titulo increíble"
                       required
                     />
                   </label>
-                  <label className="flex flex-col w-full gap-1 font-medilight text-black">
+                  <label className="flex flex-col  gap-1 font-medilight text-black">
                     Descripción
                     <input
                       type="text"
                       name="descripcion"
-                      className="bg-blue-100 rounded-3xl px-4 py-3 placeholder:text-blue-400"
+                      className="bg-blue-100 rounded-3xl px-4 py-3 placeholder:text-blue-600 w-full"
                       placeholder="Ingresa una descripción increíble"
                       required
                     />
