@@ -15,6 +15,7 @@ export default function Home() {
                 <title>Todo Next | Thomas Barenghi</title>
                 <meta name="description" content="Todo Next" />
                 <link rel="icon" href="/favicon.ico" />
+                <meta name="theme-color" content="#1D4ED8" />
             </Head>
             <main>
                <CreateTodo/>  
