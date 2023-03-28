@@ -45,7 +45,7 @@ export default function Home() {
               <h1>
                 Mis <strong className="font-semibold">tareas</strong>
               </h1>
-              <div className="flex gap-4">
+              <div className="flex gap-2">
                 <select
                   className="  rounded-3xl border-r-8 border-solid border-blue-200 bg-blue-200 py-4 px-6 align-middle font-semibold text-blue-700"
                   onChange={(e) =>
