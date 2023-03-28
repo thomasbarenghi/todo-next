@@ -51,7 +51,8 @@ export default function SubTodo({ subTodo, todoId }) {
 
     setErrors(errorTitle);
 
-    if (Object.keys(errors).length > 0) {
+    if (Object.keys(errorTitle).length > 0) {
+      console.log("error");
       return;
     }
 
@@ -75,7 +76,7 @@ export default function SubTodo({ subTodo, todoId }) {
         className="flex w-full flex-row justify-between gap-3"
         key={subTodo.id}
       >
-        <div className="flex gap-2 align-middle justify-start items-center">
+        <div className="flex items-center justify-start gap-2 align-middle">
           <input
             type="checkbox"
             style={{ width: "20px", height: "20px" }}
@@ -88,9 +89,9 @@ export default function SubTodo({ subTodo, todoId }) {
           />
 
           {addSubTodoVisibility.title.edit ? (
-            <>
+            <div className="flex flex-col">
               <input
-              className="w-full px-2 py-1 border-blue-700 border-0 rounded-lg"
+                className="w-full rounded-lg border-0 border-blue-700 px-2 py-1"
                 type="text"
                 defaultValue={titleValue}
                 autoFocus
@@ -101,7 +102,7 @@ export default function SubTodo({ subTodo, todoId }) {
               {errors.title !== null && (
                 <p className="text-xs italic text-red-500">{errors.title}</p>
               )}
-            </>
+            </div>
           ) : (
             <p
               className="text-base  text-black"
@@ -125,10 +126,10 @@ export default function SubTodo({ subTodo, todoId }) {
 function validateSubTodoForm(values) {
   let errors = {};
 
-  if (!values.titulo) {
+  if (!values.titulo || values.titulo === "") {
     errors.title = "El titulo es obligatorio";
     console.log("El titulo es obligatorio", values);
-  } 
+  }
 
   return errors;
 }
