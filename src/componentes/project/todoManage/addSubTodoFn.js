@@ -47,7 +47,7 @@ export default function AddSubTodoFn({ todo, setAddSubTodoVisibility }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col justify-end gap-2 align-bottom"
+      className="tr flex flex-col justify-end gap-2 align-bottom"
     >
       <label
         className="font-medilight flex w-full flex-col gap-1 text-black"
@@ -58,8 +58,8 @@ export default function AddSubTodoFn({ todo, setAddSubTodoVisibility }) {
           name="title"
           id="title"
           required
-          className="rounded-3xl bg-blue-100 px-4 py-2 text-sm placeholder:text-blue-600"
-          placeholder="Ingresa un title para tu subtarea"
+          className="rounded-3xl bg-blue-100 px-4 py-3 text-sm placeholder:text-blue-600"
+          placeholder="Ingresa un título para tu subtarea"
           onChange={handleValidation}
         />
         {errors.title && (

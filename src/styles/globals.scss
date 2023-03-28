@@ -101,20 +101,24 @@ h2,
 h3 {
   line-height: 130% !important;
   @apply font-light;
-  color: black
+  color: black;
 }
 
 h4,
 h5,
 h6 {
   @apply font-normal;
-  color: black
+  color: black;
 }
 
-h1, h2, h3, h4, h5, h6 {
-
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   & span {
-    color: black
+    color: black;
   }
 }
 
@@ -124,7 +128,7 @@ li,
 a,
 label {
   @apply font-light;
-  color: #25272D
+  color: #25272d;
 }
 
 /* Size */
@@ -178,7 +182,7 @@ small {
   }
 
   .grid-columns-2 {
-    @apply flex flex-col lg:grid-cols-3 lg:grid 2xl:grid-cols-3;
+    @apply flex flex-col lg:grid lg:grid-cols-3 2xl:grid-cols-3;
   }
 
   .grid-columns-3 {
@@ -198,76 +202,57 @@ small {
   }
 }
 
-//home
-.masonry-grid {
-  display: flex;
-  margin-left: -30px; /* gutter size offset */
-  width: auto;
+input[type="checkbox"] {
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+  border-color: #1d4ed8;
+  border-radius: 30%;
+  transform: translateY(-0.075em);
+  display: grid;
+  place-content: center;
 }
 
-.masonry-grid-column {
-  padding-left: 30px; /* gutter size */
-  background-clip: padding-box;
+// input[type="checkbox"] {
+//   /* Add if not using autoprefixer */
+//   -webkit-appearance: none;
+//   /* Remove most all native input styles */
+//   appearance: none;
+//   /* For iOS < 15 */
+//   background-color: var(--form-background);
+//   /* Not removed via appearance */
+//   margin: 0;
+
+//   font: inherit;
+//   color: currentColor;
+//   width: 1.15em;
+//   height: 1.15em;
+//   border: 0.15em solid currentColor;
+//   border-radius: 0.15em;
+//   transform: translateY(-0.075em);
+
+//   display: grid;
+//   place-content: center;
+// }
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  transform: scale(0);
+  transform-origin: bottom left;
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(black);
+  /* Windows High Contrast Mode */
+  background-color:#1d4ed8;
 }
 
-.masonry-grid-item {
-  margin-bottom: 30px; /* gutter size */
-  width: 100%;
-}
-
-@media (max-width: 1100px) {
-  .masonry-grid {
-    flex-wrap: wrap;
-    margin-left: -30px;
-  }
-
-  .masonry-grid-column {
-    padding-left: 30px;
-    width: 100%;
-  }
-}
-
-
-.cursor,
-.cursor-dot {
- position:fixed;
- pointer-events:none;
- top:50%;
- left:50%;
- border-radius:50%;
- z-index:999;
- transform:translate(-50%,-50%);
- -webkit-animation:.1s;
- animation:.1s;
- overflow:hidden
-}
-.cursor {
- width:24px;
- height:24px;
- background-color:red;
- border-color:blue;
- mix-blend-mode:multiply
-}
-
-.cursor-dot {
- width:4px;
- height:4px;
- background-color:#606887;
- -webkit-animation:.4s linear;
- animation:.4s linear;
- mix-blend-mode:multiply
-}
-
-
-.cursor-dot .body.dark,
-body.dark .cursor {
- background-color:#f3f2f9;
- mix-blend-mode:difference
-}
-body.dark .cursor {
- border-color:#f3f2f9
-}
-body.dark .cursor-dot {
- background-color:#f3f2f9;
- mix-blend-mode:difference
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
 }

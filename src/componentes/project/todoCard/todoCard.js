@@ -23,7 +23,8 @@ export default function TodoCard({ todo }) {
         <div className="w-full">
           <div className="align-center flex flex-row items-start justify-start gap-2">
             <input
-              className="mt-3"
+              //className="mt-2 "
+              style={{ width: "30px", height: "30px" }}
               onChange={() => {}}
               type="checkbox"
               onClick={() => dispatch(checkTodo({ idTodo: todo.id }))}

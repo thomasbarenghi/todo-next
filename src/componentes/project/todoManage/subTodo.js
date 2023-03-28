@@ -75,9 +75,10 @@ export default function SubTodo({ subTodo, todoId }) {
         className="flex w-full flex-row justify-between gap-3"
         key={subTodo.id}
       >
-        <div className="flex flex-row items-center justify-center gap-2  align-middle">
+        <div className="flex gap-2 align-middle justify-start items-center">
           <input
             type="checkbox"
+            style={{ width: "20px", height: "20px" }}
             className=""
             onChange={() => {}}
             checked={subTodo.completed}
@@ -89,6 +90,7 @@ export default function SubTodo({ subTodo, todoId }) {
           {addSubTodoVisibility.title.edit ? (
             <>
               <input
+              className="w-full px-2 py-1 border-blue-700 border-0 rounded-lg"
                 type="text"
                 defaultValue={titleValue}
                 autoFocus
@@ -102,7 +104,7 @@ export default function SubTodo({ subTodo, todoId }) {
             </>
           ) : (
             <p
-              className="text-base"
+              className="text-base  text-black"
               onClick={() => handleVisibilityTextTitleBlur()}
             >
               {titleValue}
@@ -126,9 +128,7 @@ function validateSubTodoForm(values) {
   if (!values.titulo) {
     errors.title = "El titulo es obligatorio";
     console.log("El titulo es obligatorio", values);
-  } else {
-    errors.title = null;
-  }
+  } 
 
   return errors;
 }

@@ -7,15 +7,16 @@ export default function SubTask({ todo }) {
   return (
     <>
       <div style={{ width: "97%", marginTop: "16px" }}>
-        <h6 className="mb-2 font-semibold">Subtarea/s</h6>
-        <div className="d-flex flex-column gap-2">
+        <h6 className="mb-3 font-semibold">Subtarea/s</h6>
+        <div className="flex w-full flex-col gap-1">
           {todo.subTodos.map((subTodo) => {
             return (
               <div className="flex flex-col">
-                <div className="flex gap-2">
+                <div className="flex gap-2 align-middle justify-start items-center">
                   <input
                     className="form-check-input mini-ckBox"
                     type="checkbox"
+                    style={{ width: "20px", height: "20px" }}
                     defaultChecked=""
                     onChange={() => {}}
                     onClick={() =>
@@ -26,7 +27,7 @@ export default function SubTask({ todo }) {
                     checked={subTodo.completed}
                   />
                   <div>
-                    <p className="font-normal">{subTodo.title} </p>
+                    <p className="font-light  text-black">{subTodo.title} </p>
                   </div>
                 </div>
               </div>

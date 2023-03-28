@@ -120,16 +120,19 @@ export default function PrincipalTodo({ todo }) {
     <div className="mb-4 flex flex-row items-start justify-start gap-2 align-top">
       <input
         type="checkbox"
-        className="mt-2"
+        style={{ width: "25px", height: "25px" }}
+      className="mt-3"
+    //class="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
         onClick={() => handleCompletedTodo()}
         checked={todo.completed}
         onChange={() => {}}
       />
 
-      <div style={{ width: "inherit" }}>
+      <div className="w-full">
         {principalVisibility.title.edit ? (
           <>
             <input
+              className="w-full rounded-lg border-0 border-blue-700 px-2 py-1"
               type="text"
               defaultValue={titleValue}
               autoFocus
@@ -143,7 +146,7 @@ export default function PrincipalTodo({ todo }) {
           </>
         ) : (
           <h5
-            className="font-semibold"
+            className="font-semibold text-black"
             onClick={() => handleVisibilityTextTitleBlur()}
           >
             {titleValue}
@@ -152,6 +155,7 @@ export default function PrincipalTodo({ todo }) {
         {principalVisibility.description.edit ? (
           <>
             <textarea
+              className="w-full rounded-lg border-0 border-blue-700 px-2 py-1"
               style={{ lineHeight: "135% !important" }}
               defaultValue={descriptionValue}
               autoFocus
@@ -180,10 +184,9 @@ export default function PrincipalTodo({ todo }) {
 
 function validateTitle(values) {
   let errors = {};
-console.log(values);
+  console.log(values);
   if (!values.title || values.title === "") {
     errors.title = "El titulo es obligatorio";
-
   }
   return errors;
 }

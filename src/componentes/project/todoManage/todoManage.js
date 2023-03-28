@@ -37,7 +37,7 @@ export default function TodoManage() {
           className="fixed z-10 flex h-screen w-screen items-center justify-end align-middle"
           style={{ background: "#00000066", top: 0, left: 0 }}
         >
-          <div className="seccion flex h-full justify-end py-20">
+          <div className="seccion flex h-full justify-end py-14">
             <div className="relative flex h-full w-full flex-col rounded-3xl bg-white p-10 sm:w-3/4 lg:w-2/5 2xl:w-1/4">
               <div
                 className="absolute top-4 right-4 p-1 "
@@ -50,7 +50,13 @@ export default function TodoManage() {
                   src={"/icon/cross.svg"}
                 />
               </div>
-              <h4 className="mb-2 font-semibold">Editemos esta tarea 🤯</h4>
+              <div className="mb-4">
+              <h4 className=" font-semibold">Editemos esta tarea 🤯</h4>
+              <p className="text-sm  text-gray-500">
+                Haz click en el titulo de tu tarea para editarla, puedes hacer
+                lo mismo con la descripción y las subtareas.
+              </p>
+              </div>
               <div className="flex h-full flex-col justify-between ">
                 <div className="relative h-full overflow-y-scroll ">
                   <div className="absolute top-0 left-0 bottom-0 right-0 pr-4">
