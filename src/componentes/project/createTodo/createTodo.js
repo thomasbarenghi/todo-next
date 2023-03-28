@@ -11,7 +11,7 @@ export default function CreateTodo() {
   const dispatch = useDispatch();
   const todos = useSelector((state) => state?.todos?.items) ?? [];
   const [createTodoVisibility, setCreateTodoVisibility] = useState(false);
-
+  const [errors, setErrors] = useState({});
   const handleVisibility = () => {
     setCreateTodoVisibility(true);
   };
@@ -20,6 +20,17 @@ export default function CreateTodo() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const errors = validate({
+      titulo: e.target.titulo.value,
+      descripcion: e.target.descripcion.value,
+    });
+
+    if (Object.keys(errors).length > 0) {
+      setErrors(errors);
+      return;
+    }
+
     const id = todos.length + 1;
     const completed = false;
     const newTodo = {
@@ -49,7 +60,12 @@ export default function CreateTodo() {
                 className="absolute top-4 right-4 p-1 "
                 onClick={() => setCreateTodoVisibility(false)}
               >
-                <Image width={15} height={15} alt={"close"} src={"/icon/cross.svg"} />
+                <Image
+                  width={15}
+                  height={15}
+                  alt={"close"}
+                  src={"/icon/cross.svg"}
+                />
               </div>
               <h3 className="font-semibold">Creemos una tarea 🚀</h3>
               <form onSubmit={handleSubmit}>
@@ -63,6 +79,11 @@ export default function CreateTodo() {
                       placeholder="Ingresa un titulo increíble"
                       required
                     />
+                    {errors.titulo && (
+                      <span className="text-red-500 text-sm">
+                        {errors.titulo}
+                      </span>
+                    )}
                   </label>
                   <label className="flex flex-col  gap-1 font-medilight text-black">
                     Descripción
@@ -73,6 +94,11 @@ export default function CreateTodo() {
                       placeholder="Ingresa una descripción increíble"
                       required
                     />
+                    {errors.descripcion && (
+                      <span className="text-red-500 text-sm">
+                        {errors.descripcion}
+                      </span>
+                    )}
                   </label>
                 </div>
                 <button
@@ -88,4 +114,15 @@ export default function CreateTodo() {
       )}
     </>
   );
+}
+
+function validate(form) {
+  let errors = {};
+  if (!form.titulo) {
+    errors.titulo = "El titulo es requerido";
+  }
+  if (!form.descripcion) {
+    errors.descripcion = "La descripcion es requerida";
+  }
+  return errors;
 }

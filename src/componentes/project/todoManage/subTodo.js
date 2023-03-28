@@ -14,6 +14,7 @@ export default function SubTodo({ subTodo, todoId }) {
     title: { edit: false, prev: null },
   });
   const [titleValue, setTitleValue] = useState(subTodo.title);
+  const [errors, setErrors] = useState({});
 
   const handleEditSubTodo = () => {
     const title = titleValue !== null ? titleValue : subTodo.title;
@@ -44,6 +45,16 @@ export default function SubTodo({ subTodo, todoId }) {
   };
 
   const handleVisibilityInputTitleChange = (e) => {
+    const errorTitle = validateSubTodoForm({
+      titulo: e.target.value,
+    });
+
+    setErrors(errorTitle);
+
+    if (Object.keys(errors).length > 0) {
+      return;
+    }
+
     setTitleValue(e.target.value);
   };
 
@@ -76,13 +87,19 @@ export default function SubTodo({ subTodo, todoId }) {
           />
 
           {addSubTodoVisibility.title.edit ? (
-            <input
-              type="text"
-              defaultValue={titleValue}
-              autoFocus
-              onChange={(e) => handleVisibilityInputTitleChange(e)}
-              onBlur={() => handleVisibilityInputTitleBlur()}
-            />
+            <>
+              <input
+                type="text"
+                defaultValue={titleValue}
+                autoFocus
+                required
+                onChange={(e) => handleVisibilityInputTitleChange(e)}
+                onBlur={() => handleVisibilityInputTitleBlur()}
+              />
+              {errors.title !== null && (
+                <p className="text-red-500 text-xs italic">{errors.title}</p>
+              )}
+            </>
           ) : (
             <p
               className="text-base"
@@ -101,4 +118,17 @@ export default function SubTodo({ subTodo, todoId }) {
       </div>
     </>
   );
+}
+
+function validateSubTodoForm(values) {
+  let errors = {};
+
+  if (!values.titulo) {
+    errors.title = "El titulo es obligatorio";
+    console.log("El titulo es obligatorio", values);
+  } else {
+    errors.title = null;
+  }
+
+  return errors;
 }
