@@ -9,3 +9,11 @@ The app is a to-do list developed using technologies like NextJS, Redux Toolkit,
 - [@thomasbarenghi](https://github.com/thomasbarenghi)
 
 
+
+## Deployment
+
+Link
+
+```bash
+https://todo-next-roan.vercel.app/
+```
